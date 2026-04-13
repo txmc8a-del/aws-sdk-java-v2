@@ -1,4 +1,25 @@
-Parameters:
+Outputs:
+  # Output X - Load Balancer URL
+  LoadBalancerURL:
+    Description: URL of the Application Load Balancer
+    Value: !Sub "http://${ApplicationLoadBalancer.DNSName}"
+    Export:
+      Name: !Sub "${AWS::StackName}-LoadBalancerURL"
+  
+  # Output Y - Auto Scaling Group Name
+  AutoScalingGroupName:
+    Description: Name of the Auto Scaling Group
+    Value: !Ref WebServerGroup
+    Export:
+      Name: !Sub "${AWS::StackName}-ASGName"
+  
+  # Output Z - Target Group ARN
+  TargetGroupARN:
+    Description: ARN of the Target Group
+    Value: !Ref WebServerTargetGroup
+    Export:
+      Name: !Sub "${AWS::StackName}-TargetGroupARN"
+#Parameters:
   # Your registers A, B, C, D, E, F
   MinSize:
     Type: Number
