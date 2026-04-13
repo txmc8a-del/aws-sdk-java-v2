@@ -1,3 +1,36 @@
+Parameters:
+  # Your registers A, B, C, D, E, F
+  MinSize:
+    Type: Number
+    Default: 2
+    Description: Minimum number of instances (Register A)
+  
+  MaxSize:
+    Type: Number
+    Default: 6
+    Description: Maximum number of instances (Register B)
+  
+  InstanceType:
+    Type: String
+    Default: t3.micro
+    Description: EC2 instance type (Register C)
+  
+  LatestAmiId:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+    Description: Latest Amazon Linux AMI (Register D)
+  
+  KeyPairName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: EC2 Key Pair for SSH access (Register E)
+  
+  VPCID:
+    Type: AWS::EC2::VPC::Id
+    Description: VPC ID where resources will be created (Register F)
+  
+  PublicSubnets:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: Public subnets for ALB and Auto Scaling Group
 # ALB Security Group (referenced but not defined)
 ALBSecurityGroup:
   Type: AWS::EC2::SecurityGroup
@@ -14,7 +47,7 @@ ALBSecurityGroup:
         ToPort: 443
         CidrIp: 0.0.0.0/0
 
-WebServerSecurityGroup:
+WebServerSecurityGroup: 
   Type: AWS::EC2::SecurityGroup
   Properties:
     GroupDescription: Security group for web servers
