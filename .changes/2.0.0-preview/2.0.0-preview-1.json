@@ -1,4 +1,23 @@
 {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CostOptimizationHubAdminAccess",
+            "Effect": "Allow",
+            "Action": [
+                "cost-optimization-hub:ListEnrollmentStatuses",
+                "cost-optimization-hub:UpdateEnrollmentStatus",
+                "cost-optimization-hub:GetPreferences",
+                "cost-optimization-hub:UpdatePreferences",
+                "cost-optimization-hub:GetRecommendation",
+                "cost-optimization-hub:ListRecommendations",
+                "cost-optimization-hub:ListRecommendationSummaries"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+{
     "date": "2017-06-28",
     "version": "2.0.0-preview-1",
     "entries": [
